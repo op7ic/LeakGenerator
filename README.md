@@ -1,4 +1,5 @@
 **Idea**
+
 This project allows you to generate your own personal email and password leak combo. 
 
 Fancy generating 280 milion fake emails with equally fake password? Why not ... (just run 'leakme.py')
