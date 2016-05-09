@@ -12,7 +12,7 @@ For fun. Need more info? read this http://arstechnica.co.uk/security/2016/05/the
 
 **Example**
 
-See example.out file for a list of randomly generated 'leak'
+See example.out file for randomly generated 'leak'
 
 **Contributions**
 
