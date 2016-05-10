@@ -23,31 +23,31 @@ python leakme.py sha512
 
 To generate sha256 passwords only:
 
-python leakme.py sha256
+`python leakme.py sha256`
 
 To generate sha1 passwords only:
 
-python leakme.py sha1
+`python leakme.py sha1`
 
 To generate md5 passwords only:
 
-python leakme.py md5
+`python leakme.py md5`
 
 To generate sha512 + random salt:
 
-python leakme.py sha512_r_salt
+`python leakme.py sha512_r_salt`
 
 To generate sha256 + random salt:
 
-python leakme.py sha256_r_salt
+`python leakme.py sha256_r_salt`
 
 To generate sha1 + random salt:
 
-python leakme.py sha1_r_salt
+`python leakme.py sha1_r_salt`
 
 To generate md5 + random salt:
 
-python leakme.py md5_r_salt
+`python leakme.py md5_r_salt`
 
 **Example**
 
