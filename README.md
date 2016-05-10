@@ -33,19 +33,19 @@ To generate md5 + passwords:
 
 `python leakme.py md5`
 
-To generate sha512 randomly saltd + passwords:
+To generate sha512 randomly salted + passwords:
 
 `python leakme.py sha512_r_salt`
 
-To generate sha256 randomly saltd + passwords:
+To generate sha256 randomly salted + passwords:
 
 `python leakme.py sha256_r_salt`
 
-To generate sha1 randomly saltd + passwords:
+To generate sha1 randomly salted + passwords:
 
 `python leakme.py sha1_r_salt`
 
-To generate md5 randomly saltd + passwords
+To generate md5 randomly salted + passwords
 
 `python leakme.py md5_r_salt`
 
