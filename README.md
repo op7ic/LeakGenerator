@@ -10,6 +10,45 @@ If you **really** need to create more emails/passwords just edit the file and ch
 
 For fun. Need more info? read this http://arstechnica.co.uk/security/2016/05/the-massive-password-breach-that-wasnt-google-says-data-is-98-bogus/
 
+
+**Use**
+
+To generate clear text passwords only
+
+python leakme.py clear
+
+To generate sha512 passwords only:
+
+python leakme.py sha512
+
+To generate sha256 passwords only:
+
+python leakme.py sha256
+
+To generate sha1 passwords only:
+
+python leakme.py sha1
+
+To generate md5 passwords only:
+
+python leakme.py md5
+
+To generate sha512 + random salt:
+
+python leakme.py sha512_r_salt
+
+To generate sha256 + random salt:
+
+python leakme.py sha256_r_salt
+
+To generate sha1 + random salt:
+
+python leakme.py sha1_r_salt
+
+To generate md5 + random salt:
+
+python leakme.py md5_r_salt
+
 **Example**
 
 See example.out file for randomly generated 'leak'

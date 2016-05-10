@@ -1,4 +1,5 @@
 import random,string,itertools,re,sys
+import hashlib
 # Resources
 # https://raw.githubusercontent.com/neo/discourse_heroku/master/lib/common_passwords/10k-common-passwords.txt
 # https://raw.githubusercontent.com/dominictarr/random-name/master/names.txt
@@ -20,19 +21,18 @@ for x in itertools.count(start=min,step=1):
 		password = random.choice(common_passwords)
 	else:
 		password = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,14)))
-
 	if(x==max):
+		print "\t\t[+] Enumerated all, quitting"
 		break;
-		print "[+] Enumerated all, quitting"
 		sys.exit(1)
 	else:
 		name = ''
 		if random.randrange(1,10) == 3:
 			name = str(random.choice(english_first_names))+"."+str(random.choice(surnames))+"@"+str(random.choice(domains))
 		elif random.randrange(1,10) == 1:
-			name = str.lower(random.choice(english_first_names))+"."+''.join(random.choice(string.digits) for _ in range(random.randrange(1,5)))+"@"+random.choice(domains)
+			name = str.lower(random.choice(english_first_names))+"_"+''.join(random.choice(string.digits) for _ in range(random.randrange(1,5)))+"@"+random.choice(domains)
 		elif random.randrange(1,10) == 2:
-			name = str.lower(random.choice(surnames))+"."+''.join(random.choice(string.digits) for _ in range(random.randrange(1,5)))+"@"+random.choice(domains)
+			name = str.lower(random.choice(surnames))+"-"+''.join(random.choice(string.digits) for _ in range(random.randrange(1,5)))+"@"+random.choice(domains)
 		elif random.randrange(1,10) == 8:
 			name = ''.join(random.choice(string.digits) for _ in range(random.randrange(1,5)))+str.upper(random.choice(surnames))+"@"+random.choice(domains)
 		elif random.randrange(1,10) == 9:
@@ -48,6 +48,44 @@ for x in itertools.count(start=min,step=1):
 		elif random.randrange(1,10) == 10:
 			name= ''.join(random.choice(string.ascii_letters  + string.digits + ['.','+','-','_']) for _ in range(random.randrange(6,15)))+"."+str(random.choice(surnames))+"@"+random.choice(domains)
 		else:
-			name = str(random.choice(english_first_names))+"."+str(random.choice(surnames))+"@gmail.com"
-		if (re.match("^[a-zA-Z0-9._%-]+@[a-zA-Z0-9._%-]+.[a-zA-Z]{2,6}$", name)):
-			print name,":",password
+			name = str(random.choice(english_first_names))+"_"+str(random.choice(surnames))+"@"+str(random.choice(domains))
+
+		if (sys.argv[1] == "clear"):
+			if (re.match("^[a-zA-Z0-9._%-]+@[a-zA-Z0-9._%-]+.[a-zA-Z]{2,6}$", name)):
+				print name,":",password
+		elif (sys.argv[1] == "sha256"):
+			if (re.match("^[a-zA-Z0-9._%-]+@[a-zA-Z0-9._%-]+.[a-zA-Z]{2,6}$", name)):
+				hash_object = hashlib.sha256(password).hexdigest()
+				print name,":",password,":",hash_object
+		elif (sys.argv[1] == "sha512"):
+			if (re.match("^[a-zA-Z0-9._%-]+@[a-zA-Z0-9._%-]+.[a-zA-Z]{2,6}$", name)):
+				hash_object = hashlib.sha512(password).hexdigest()
+				print name,":",password,":",hash_object
+		elif (sys.argv[1] == "md5"):
+			if (re.match("^[a-zA-Z0-9._%-]+@[a-zA-Z0-9._%-]+.[a-zA-Z]{2,6}$", name)):
+				hash_object = hashlib.md5(password).hexdigest()
+				print name,":",password,":",hash_object
+		elif (sys.argv[1] == "sha1"):
+			if (re.match("^[a-zA-Z0-9._%-]+@[a-zA-Z0-9._%-]+.[a-zA-Z]{2,6}$", name)):
+				hash_object = hashlib.sha1(password).hexdigest()
+				print name,":",password,":",hash_object
+		elif (sys.argv[1] == "sha1_r_salt"):
+			if (re.match("^[a-zA-Z0-9._%-]+@[a-zA-Z0-9._%-]+.[a-zA-Z]{2,6}$", name)):
+				hash_object = hashlib.sha1(password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))).hexdigest()
+				print name,":",password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25))),":",hash_object
+		elif (sys.argv[1] == "sha256_r_salt"):
+			if (re.match("^[a-zA-Z0-9._%-]+@[a-zA-Z0-9._%-]+.[a-zA-Z]{2,6}$", name)):
+				hash_object = hashlib.sha256(password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))).hexdigest()
+				print name,":",password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25))),":",hash_object
+		elif (sys.argv[1] == "sha512_r_salt"):
+			if (re.match("^[a-zA-Z0-9._%-]+@[a-zA-Z0-9._%-]+.[a-zA-Z]{2,6}$", name)):
+				hash_object = hashlib.sha512(password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))).hexdigest()
+				print name,":",password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25))),":",hash_object
+		elif (sys.argv[1] == "md5_r_salt"):
+			if (re.match("^[a-zA-Z0-9._%-]+@[a-zA-Z0-9._%-]+.[a-zA-Z]{2,6}$", name)):
+				hash_object = hashlib.md5(password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))).hexdigest()
+				print name,":",password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25))),":",hash_object
+		
+		elif (sys.argv[1] == "-h"):
+			print "LeakGenerator v1.0A by op7ic"
+			print "Discover your own leak"
