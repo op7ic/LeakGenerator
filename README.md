@@ -13,39 +13,39 @@ For fun. Need more info? read this http://arstechnica.co.uk/security/2016/05/the
 
 **Use**
 
-To generate clear text passwords only
+To generate clear text passwords:
 
-python leakme.py clear
+`python leakme.py clear`
 
-To generate sha512 passwords only:
+To generate sha512 + passwords:
 
-python leakme.py sha512
+`python leakme.py sha512`
 
-To generate sha256 passwords only:
+To generate sha256 + passwords:
 
 `python leakme.py sha256`
 
-To generate sha1 passwords only:
+To generate sha1 + passwords:
 
 `python leakme.py sha1`
 
-To generate md5 passwords only:
+To generate md5 + passwords:
 
 `python leakme.py md5`
 
-To generate sha512 + random salt:
+To generate sha512 randomly saltd + passwords:
 
 `python leakme.py sha512_r_salt`
 
-To generate sha256 + random salt:
+To generate sha256 randomly saltd + passwords:
 
 `python leakme.py sha256_r_salt`
 
-To generate sha1 + random salt:
+To generate sha1 randomly saltd + passwords:
 
 `python leakme.py sha1_r_salt`
 
-To generate md5 + random salt:
+To generate md5 randomly saltd + passwords
 
 `python leakme.py md5_r_salt`
 
