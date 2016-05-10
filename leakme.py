@@ -86,6 +86,28 @@ for x in itertools.count(start=min,step=1):
 				hash_object = hashlib.md5(password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))).hexdigest()
 				print name,":",password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25))),":",hash_object
 		
-		elif (sys.argv[1] == "-h"):
-			print "LeakGenerator v1.0A by op7ic"
-			print "Discover your own leak"
+if (sys.argv[1] == "-h"):
+	print "-= LeakGenerator v1.0A by op7ic =-"
+	print "Discover your own leak"
+	option = """
+Following use cases exist.
+To generate clear text passwords:
+python leakme.py clear
+To generate sha512 + passwords:
+python leakme.py sha512
+To generate sha256 + passwords:
+python leakme.py sha256
+To generate sha1 + passwords:
+python leakme.py sha1
+To generate md5 + passwords:
+python leakme.py md5
+To generate sha512 randomly saltd + passwords:
+python leakme.py sha512_r_salt
+To generate sha256 randomly saltd + passwords:
+python leakme.py sha256_r_salt
+To generate sha1 randomly saltd + passwords:
+python leakme.py sha1_r_salt
+To generate md5 randomly saltd + passwords
+python leakme.py md5_r_salt
+ """
+	print option

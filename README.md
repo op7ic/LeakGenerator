@@ -2,7 +2,7 @@
 
 This project allows you to generate your own personal email and password leak combo. 
 
-Fancy generating 280 milion fake emails with equally fake password? Why not ... (just run 'leakme.py')
+Fancy generating 280 milion fake emails with equally fake password? Why not ... (just run 'leakme.py' with appropriate arguments listed below)
 
 If you **really** need to create more emails/passwords just edit the file and change 'min' and 'max' variable.
 
