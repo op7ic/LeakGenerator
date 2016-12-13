@@ -42,125 +42,128 @@ domains = ["aol.com", "att.net", "comcast.net", "facebook.com", "gmail.com", "gm
 
 
 def generate(max,gen_type):
-	for x in itertools.count(start=0x00000000,step=1):
-		password = ''
-		if random.randrange(6,26) > 12:
-			password = random.choice(common_passwords)
-		else:
-			password = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(2,8)))
-		if(x==max):
-			
-			break;
-			sys.exit(1)
-		else:
-			name = ''
-			if random.randrange(1,10) == 3:
-				name = str(random.choice(english_first_names))+"."+str(random.choice(surnames))+"@"+str(random.choice(domains))
-			elif random.randrange(1,10) == 1:
-				name = str.lower(random.choice(english_first_names))+"_"+''.join(random.choice(string.digits) for _ in range(random.randrange(1,5)))+"@"+random.choice(domains)
-			elif random.randrange(1,10) == 2:
-				name = str.lower(random.choice(surnames))+"-"+''.join(random.choice(string.digits) for _ in range(random.randrange(1,5)))+"@"+random.choice(domains)
-			elif random.randrange(1,10) == 8:
-				name = ''.join(random.choice(string.digits) for _ in range(random.randrange(1,5)))+str.upper(random.choice(surnames))+"@"+random.choice(domains)
-			elif random.randrange(1,10) == 9:
-				name = ''.join(random.choice(string.digits) for _ in range(random.randrange(1,2)))+"-"+str.upper(random.choice(surnames))+"@"+random.choice(domains)
-			elif random.randrange(1,10) == 5:
-				name = str.lower(random.choice(english_first_names))+"-"+''.join(random.choice(string.digits) for _ in range(random.randrange(1,5)))+"@"+random.choice(domains)
-			elif random.randrange(1,10) == 4:
-				name = str.upper(random.choice(english_first_names))+""+str.upper(random.choice(surnames))+"@"+random.choice(domains)
-			elif random.randrange(1,10) == 6:
-				name= ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))+"@"+random.choice(domains)
-			elif random.randrange(1,10) == 7:
-				name= ''.join(random.choice(string.ascii_letters) for _ in range(random.randrange(1,5)))+"."+str(random.choice(surnames))+"@"+random.choice(domains)
-			elif random.randrange(1,10) == 10:
-				name= ''.join(random.choice(string.ascii_letters  + string.digits + ['.','+','-','_']) for _ in range(random.randrange(6,15)))+"."+str(random.choice(surnames))+"@"+random.choice(domains)
+	if (max==None or gen_type == None):
+		sys.exit(1)
+	else:
+		for x in itertools.count(start=0,step=1):
+			password = ''
+			if random.randrange(6,26) > 12:
+				password = random.choice(common_passwords)
 			else:
-				name = str(random.choice(english_first_names))+"_"+str(random.choice(surnames))+"@"+str(random.choice(domains))
+				password = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(2,8)))
+			if(x==max):
+				
+				break;
+				sys.exit(1)
+			else:
+				name = ''
+				if random.randrange(1,10) == 3:
+					name = str(random.choice(english_first_names))+"."+str(random.choice(surnames))+"@"+str(random.choice(domains))
+				elif random.randrange(1,10) == 1:
+					name = str.lower(random.choice(english_first_names))+"_"+''.join(random.choice(string.digits) for _ in range(random.randrange(1,5)))+"@"+random.choice(domains)
+				elif random.randrange(1,10) == 2:
+					name = str.lower(random.choice(surnames))+"-"+''.join(random.choice(string.digits) for _ in range(random.randrange(1,5)))+"@"+random.choice(domains)
+				elif random.randrange(1,10) == 8:
+					name = ''.join(random.choice(string.digits) for _ in range(random.randrange(1,5)))+str.upper(random.choice(surnames))+"@"+random.choice(domains)
+				elif random.randrange(1,10) == 9:
+					name = ''.join(random.choice(string.digits) for _ in range(random.randrange(1,2)))+"-"+str.upper(random.choice(surnames))+"@"+random.choice(domains)
+				elif random.randrange(1,10) == 5:
+					name = str.lower(random.choice(english_first_names))+"-"+''.join(random.choice(string.digits) for _ in range(random.randrange(1,5)))+"@"+random.choice(domains)
+				elif random.randrange(1,10) == 4:
+					name = str.upper(random.choice(english_first_names))+""+str.upper(random.choice(surnames))+"@"+random.choice(domains)
+				elif random.randrange(1,10) == 6:
+					name= ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))+"@"+random.choice(domains)
+				elif random.randrange(1,10) == 7:
+					name= ''.join(random.choice(string.ascii_letters) for _ in range(random.randrange(1,5)))+"."+str(random.choice(surnames))+"@"+random.choice(domains)
+				elif random.randrange(1,10) == 10:
+					name= ''.join(random.choice(string.ascii_letters  + string.digits + ['.','+','-','_']) for _ in range(random.randrange(6,15)))+"."+str(random.choice(surnames))+"@"+random.choice(domains)
+				else:
+					name = str(random.choice(english_first_names))+"_"+str(random.choice(surnames))+"@"+str(random.choice(domains))
 
-			if (gen_type == "clear"):
-				if (re.match(emailregex, name)):
-					print name,":",password
-			elif (gen_type == "sha256"):
-				if (re.match(emailregex, name)):
-					hash_object = hashlib.sha256(password).hexdigest()
-					print name,":",password,":",hash_object
-			elif (gen_type == "sha512"):
-				if (re.match(emailregex, name)):
-					hash_object = hashlib.sha512(password).hexdigest()
-					print name,":",password,":",hash_object
-			elif (gen_type == "md5"):
-				if (re.match(emailregex, name)):
-					hash_object = hashlib.md5(password).hexdigest()
-					print name,":",password,":",hash_object
-			elif (gen_type == "sha1"):
-				if (re.match(emailregex, name)):
+				if (gen_type == "clear"):
+					if (re.match(emailregex, name)):
+						print name,":",password
+				elif (gen_type == "sha256"):
+					if (re.match(emailregex, name)):
+						hash_object = hashlib.sha256(password).hexdigest()
+						print name,":",password,":",hash_object
+				elif (gen_type == "sha512"):
+					if (re.match(emailregex, name)):
+						hash_object = hashlib.sha512(password).hexdigest()
+						print name,":",password,":",hash_object
+				elif (gen_type == "md5"):
+					if (re.match(emailregex, name)):
+						hash_object = hashlib.md5(password).hexdigest()
+						print name,":",password,":",hash_object
+				elif (gen_type == "sha1"):
+					if (re.match(emailregex, name)):
+						hash_object = hashlib.sha1(password).hexdigest()
+						print name,":",password,":",hash_object
+				elif (gen_type == "ntlm"):
+					if (re.match(emailregex, name)):
+						hash_object = binascii.hexlify(hashlib.new('md4', password.encode('utf-16le')).digest())
+						print name,":",password,":",hash_object
+				elif (gen_type == "sha1_r_salt"):
+					if (re.match(emailregex, name)):
+						pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
+						hash_object = hashlib.sha1(pass_obj).hexdigest()
+						print name,":",pass_obj,":",hash_object
+				elif (gen_type == "sha256_r_salt"):
+					if (re.match(emailregex, name)):
+						pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
+						hash_object = hashlib.sha256(pass_obj).hexdigest()
+						print name,":",pass_obj,":",hash_object
+				elif (gen_type == "sha512_r_salt"):
+					if (re.match(emailregex, name)):
+						pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
+						hash_object = hashlib.sha512(pass_obj).hexdigest()
+						print name,":",pass_obj,":",hash_object
+				elif (gen_type == "md5_r_salt"):
+					if (re.match(emailregex, name)):
+						pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
+						hash_object = hashlib.md5(pass_obj).hexdigest()
+						print name,":",pass_obj,":",hash_object
+				elif (gen_type == "ntlm_r_salt"):
+					if (re.match(emailregex, name)):
+						pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
+						hash_object = binascii.hexlify(hashlib.new('md4', pass_obj.encode('utf-16le')).digest())
+						print name,":",pass_obj,":",hash_object
+
+				elif(gen_type == "md5_hashonly"):
+						hash_object = hashlib.md5(password).hexdigest()
+						print hash_object
+				elif(gen_type == "sha1_hashonly"):
 					hash_object = hashlib.sha1(password).hexdigest()
-					print name,":",password,":",hash_object
-			elif (gen_type == "ntlm"):
-				if (re.match(emailregex, name)):
+					print hash_object
+				elif(gen_type == "sha256_hashonly"):
+					hash_object = hashlib.sha256(password).hexdigest()
+					print hash_object
+				elif(gen_type == "sha512_hashonly"):
+					hash_object = hashlib.sha512(password).hexdigest()
+					print hash_object
+				elif(gen_type == "ntlm_hashonly"):
 					hash_object = binascii.hexlify(hashlib.new('md4', password.encode('utf-16le')).digest())
-					print name,":",password,":",hash_object
-			elif (gen_type == "sha1_r_salt"):
-				if (re.match(emailregex, name)):
-					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
-					hash_object = hashlib.sha1(pass_obj).hexdigest()
-					print name,":",pass_obj,":",hash_object
-			elif (gen_type == "sha256_r_salt"):
-				if (re.match(emailregex, name)):
-					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
-					hash_object = hashlib.sha256(pass_obj).hexdigest()
-					print name,":",pass_obj,":",hash_object
-			elif (gen_type == "sha512_r_salt"):
-				if (re.match(emailregex, name)):
-					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
-					hash_object = hashlib.sha512(pass_obj).hexdigest()
-					print name,":",pass_obj,":",hash_object
-			elif (gen_type == "md5_r_salt"):
-				if (re.match(emailregex, name)):
+					print hash_object
+				elif(gen_type == "md5_r_salt_hashonly"):
 					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
 					hash_object = hashlib.md5(pass_obj).hexdigest()
-					print name,":",pass_obj,":",hash_object
-			elif (gen_type == "ntlm_r_salt"):
-				if (re.match(emailregex, name)):
-					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
-					hash_object = binascii.hexlify(hashlib.new('md4', pass_obj.encode('utf-16le')).digest())
-					print name,":",pass_obj,":",hash_object
-
-			elif(gen_type == "md5_hashonly"):
-					hash_object = hashlib.md5(password).hexdigest()
 					print hash_object
-			elif(gen_type == "sha1_hashonly"):
-				hash_object = hashlib.sha1(password).hexdigest()
-				print hash_object
-			elif(gen_type == "sha256_hashonly"):
-				hash_object = hashlib.sha256(password).hexdigest()
-				print hash_object
-			elif(gen_type == "sha512_hashonly"):
-				hash_object = hashlib.sha512(password).hexdigest()
-				print hash_object
-			elif(gen_type == "ntlm_hashonly"):
-				hash_object = binascii.hexlify(hashlib.new('md4', password.encode('utf-16le')).digest())
-				print hash_object
-			elif(gen_type == "md5_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
-				hash_object = hashlib.md5(pass_obj).hexdigest()
-				print hash_object
-			elif(gen_type == "sha1_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
-				hash_object = hashlib.sha1(pass_obj).hexdigest()
-				print hash_object
-			elif(gen_type == "sha256_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
-				hash_object = hashlib.sha256(pass_obj).hexdigest()
-				print hash_object
-			elif(gen_type == "sha512_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
-				hash_object = hashlib.sha512(pass_obj).hexdigest()
-				print hash_object
-			elif(gen_type == "ntlm_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits))
-				hash_object = binascii.hexlify(hashlib.new('md4', pass_obj.encode('utf-16le')).digest())
-				print hash_object
+				elif(gen_type == "sha1_r_salt_hashonly"):
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
+					hash_object = hashlib.sha1(pass_obj).hexdigest()
+					print hash_object
+				elif(gen_type == "sha256_r_salt_hashonly"):
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
+					hash_object = hashlib.sha256(pass_obj).hexdigest()
+					print hash_object
+				elif(gen_type == "sha512_r_salt_hashonly"):
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
+					hash_object = hashlib.sha512(pass_obj).hexdigest()
+					print hash_object
+				elif(gen_type == "ntlm_r_salt_hashonly"):
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits))
+					hash_object = binascii.hexlify(hashlib.new('md4', pass_obj.encode('utf-16le')).digest())
+					print hash_object
 
 
 def help():
@@ -184,10 +187,10 @@ sha256_r_salt
 sha512_r_salt
 ntlm_r_salt
 
-[+] Other type. Will print "email : password : hash" combo.
+[+] Other type. Will print "email : password" combo.
 clear
 
-[+] Hash only types that print only 'hash'
+[+] Hash only types that print only 'hash' values
 md5_hashonly
 sha1_hashonly
 sha256_hashonly
@@ -208,9 +211,11 @@ python leakme.py -t md5_r_salt -m 0x00FFFFFF
 	return types
 
 parser = optparse.OptionParser(usage=help())
-parser.add_option('-m', '--max', help = "Number of hashes to generate in hex format e.g. --max=0x00FFFFFF",action="store", dest="max_dump",default="0x0")
+parser.add_option('-m', '--max', help = "Number of hashes to generate in hex format e.g. --max=0x00FFFFFF",action="store", dest="max_dump")
 parser.add_option('-t', '--type', help="Hash type to print, use -l or --list-hashes to see all applicable hash types",action="store", dest="hash_type")
 parser.add_option('-l', '--list-hashes', help = "List all hash types")
 (opts, args) = parser.parse_args()
+if (len(args) == 0):
+	print help()
 
 generate(opts.max_dump,opts.hash_type)
