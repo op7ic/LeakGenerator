@@ -41,15 +41,18 @@ surnames = ["Aaberg","Aalst","Aara","Aaren","Aarika","Aaron","Aaronson","Ab","Ab
 domains = ["aol.com", "att.net", "comcast.net", "facebook.com", "gmail.com", "gmx.com", "googlemail.com","google.com", "hotmail.com", "hotmail.co.uk", "mac.com", "me.com", "mail.com", "msn.com","live.com", "sbcglobal.net", "verizon.net", "yahoo.com", "yahoo.co.uk","email.com", "games.com", "gmx.net", "hush.com", "hushmail.com", "icloud.com", "inbox.com","lavabit.com", "love.com" , "outlook.com", "pobox.com", "rocketmail.com","safe-mail.net", "wow.com", "ygm.com", "ymail.com", "zoho.com", "fastmail.fm","yandex.com","bellsouth.net", "charter.net", "comcast.net", "cox.net", "earthlink.net", "juno.com","btinternet.com", "virginmedia.com", "blueyonder.co.uk", "freeserve.co.uk", "live.co.uk","ntlworld.com", "o2.co.uk", "orange.net", "sky.com", "talktalk.co.uk", "tiscali.co.uk","virgin.net", "wanadoo.co.uk", "bt.com","sina.com", "qq.com", "naver.com", "hanmail.net", "daum.net", "nate.com", "yahoo.co.jp", "yahoo.co.kr", "yahoo.co.id", "yahoo.co.in", "yahoo.com.sg", "yahoo.com.ph","hotmail.fr", "live.fr", "laposte.net", "yahoo.fr", "wanadoo.fr", "orange.fr", "gmx.fr", "sfr.fr", "neuf.fr", "free.fr","gmx.de", "hotmail.de", "live.de", "online.de", "t-online.de", "web.de", "yahoo.de","mail.ru", "rambler.ru", "yandex.ru", "ya.ru", "list.ru","hotmail.be", "live.be", "skynet.be", "voo.be", "tvcablenet.be", "telenet.be","hotmail.com.ar", "live.com.ar", "yahoo.com.ar", "fibertel.com.ar", "speedy.com.ar", "arnet.com.ar","hotmail.com", "gmail.com", "yahoo.com.mx", "live.com.mx", "yahoo.com", "hotmail.es", "live.com", "hotmail.com.mx", "prodigy.net.mx", "msn.com"]
 
 
-def generate(max,gen_type):
+
+def generate(max_num,gen_type):
+	if max_num == 0:
+		sys.exit(1)
+
 	for x in itertools.count(start=0,step=1):
 		password = ''
 		if random.randrange(6,26) > 12:
 			password = random.choice(common_passwords)
 		else:
 			password = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(2,8)))
-		if(x==max):
-			
+		if(x==max_num):
 			break;
 			sys.exit(1)
 		else:
@@ -125,42 +128,53 @@ def generate(max,gen_type):
 					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
 					hash_object = binascii.hexlify(hashlib.new('md4', pass_obj.encode('utf-16le')).digest())
 					print name,":",pass_obj,":",hash_object
-
 			elif(gen_type == "md5_hashonly"):
 					hash_object = hashlib.md5(password).hexdigest()
 					print hash_object
 			elif(gen_type == "sha1_hashonly"):
-				hash_object = hashlib.sha1(password).hexdigest()
-				print hash_object
+					hash_object = hashlib.sha1(password).hexdigest()
+					print hash_object
 			elif(gen_type == "sha256_hashonly"):
-				hash_object = hashlib.sha256(password).hexdigest()
-				print hash_object
+					hash_object = hashlib.sha256(password).hexdigest()
+					print hash_object
 			elif(gen_type == "sha512_hashonly"):
-				hash_object = hashlib.sha512(password).hexdigest()
-				print hash_object
+					hash_object = hashlib.sha512(password).hexdigest()
+					print hash_object
 			elif(gen_type == "ntlm_hashonly"):
-				hash_object = binascii.hexlify(hashlib.new('md4', password.encode('utf-16le')).digest())
-				print hash_object
+					hash_object = binascii.hexlify(hashlib.new('md4', password.encode('utf-16le')).digest())
+					print hash_object
 			elif(gen_type == "md5_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
-				hash_object = hashlib.md5(pass_obj).hexdigest()
-				print hash_object
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
+					hash_object = hashlib.md5(pass_obj).hexdigest()
+					print hash_object
 			elif(gen_type == "sha1_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
-				hash_object = hashlib.sha1(pass_obj).hexdigest()
-				print hash_object
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
+					hash_object = hashlib.sha1(pass_obj).hexdigest()
+					print hash_object
 			elif(gen_type == "sha256_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
-				hash_object = hashlib.sha256(pass_obj).hexdigest()
-				print hash_object
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
+					hash_object = hashlib.sha256(pass_obj).hexdigest()
+					print hash_object
 			elif(gen_type == "sha512_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
-				hash_object = hashlib.sha512(pass_obj).hexdigest()
-				print hash_object
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
+					hash_object = hashlib.sha512(pass_obj).hexdigest()
+					print hash_object
 			elif(gen_type == "ntlm_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits))
-				hash_object = binascii.hexlify(hashlib.new('md4', pass_obj.encode('utf-16le')).digest())
-				print hash_object
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits))
+					hash_object = binascii.hexlify(hashlib.new('md4', pass_obj.encode('utf-16le')).digest())
+					print hash_object
+			elif(gen_type == "ad_compromise"):
+					#https://technet.microsoft.com/en-us/library/active-directory-maximum-limits-scalability(v=ws.10).aspx 
+					# based on above making 6m limit on dump
+					if (max_num == 6000000):
+						break
+						sys.exit(1)
+					else:
+						hash_object = "%s:aad3b435b51404eeaad3b435b51404ee:%s:::" % (str(x),binascii.hexlify(hashlib.new('md4', password.encode('utf-16le')).digest())) 
+						print hash_object
+			else:
+					print "[!] Unknown hash type, exit"
+					sys.exit(1) 
 
 
 def help():
@@ -184,8 +198,9 @@ sha256_r_salt
 sha512_r_salt
 ntlm_r_salt
 
-[+] Other type. Will print "email : password" combo.
+[+] Other type. Will print "email or username : password" combo.
 clear
+ad_compromise
 
 [+] Hash only types that print only 'hash' values
 md5_hashonly
@@ -211,8 +226,6 @@ parser = optparse.OptionParser(usage=help())
 parser.add_option('-m', '--max', help = "Number of hashes to generate in hex format e.g. --max=0x00FFFFFF",action="store", dest="max_dump")
 parser.add_option('-t', '--type', help="Hash type to print, use -h or --help to see all applicable hash types",action="store", dest="hash_type")
 (opts, args) = parser.parse_args()
-if (len(args) == 0):
-	print help()
-	sys.exit(1)
+
 
 generate(opts.max_dump,opts.hash_type)
