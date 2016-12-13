@@ -36,6 +36,7 @@ ntlm_r_salt
 
 [+] Other type. Will print "email : password" combo.
 clear
+ad_compromise # special "AD" compromise mode, no usernames just SIDs
 
 [+] Hash only types that print only 'hash' values
 md5_hashonly
@@ -55,6 +56,10 @@ The final command would look like this:
 
 python leakme.py -t md5_r_salt -m 0x00FFFFFF
 ```
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 
 **Example**
 
