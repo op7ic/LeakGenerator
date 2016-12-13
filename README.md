@@ -12,42 +12,49 @@ For fun. Need more info? read this http://arstechnica.co.uk/security/2016/05/the
 
 
 **Use**
+`
+$ python leakme.py
 
-To generate clear text passwords:
+-= LeakGenerator v1.1A by op7ic =-
+Discover your own leak with spoofed emails, random passwords and equally random hashes
 
-`python leakme.py clear`
+Supported hash types for '-t' argument:
 
-To generate sha512 + passwords:
+[+] Main hash alghoritms. Will print "email : password : hash" combo.
+md5
+sha1
+sha256
+sha512
+ntlm
 
-`python leakme.py sha512`
+[+] Hash alghoritms with random salt added. Will print "email : password : hash" combo.
+md5_r_salt
+sha1_r_salt
+sha256_r_salt
+sha512_r_salt
+ntlm_r_salt
 
-To generate sha256 + passwords:
+[+] Other type. Will print "email : password" combo.
+clear
 
-`python leakme.py sha256`
+[+] Hash only types that print only 'hash' values
+md5_hashonly
+sha1_hashonly
+sha256_hashonly
+sha512_hashonly
+ntlm_only
+md5_r_salt_hashonly
+sha1_r_salt_hashonly
+sha256_r_salt_hashonly
+sha512_r_salt_hashonly
+ntlm_r_salt_hashonly
 
-To generate sha1 + passwords:
+You also need to specify max passwords you want to generate in hex format e.g. 0x00FFFFFF
 
-`python leakme.py sha1`
+The final command would look like this:
 
-To generate md5 + passwords:
-
-`python leakme.py md5`
-
-To generate sha512 randomly salted + passwords:
-
-`python leakme.py sha512_r_salt`
-
-To generate sha256 randomly salted + passwords:
-
-`python leakme.py sha256_r_salt`
-
-To generate sha1 randomly salted + passwords:
-
-`python leakme.py sha1_r_salt`
-
-To generate md5 randomly salted + passwords
-
-`python leakme.py md5_r_salt`
+python leakme.py -t md5_r_salt -m 0x00FFFFFF
+`
 
 **Example**
 
