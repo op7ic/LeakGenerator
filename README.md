@@ -56,10 +56,6 @@ The final command would look like this:
 
 python leakme.py -t md5_r_salt -m 0x00FFFFFF
 ```
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 
 **Example**
 
