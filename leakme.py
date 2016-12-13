@@ -53,7 +53,7 @@ def generate(max_num,gen_type):
 		else:
 			password = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(2,8)))
 		if(x==max_num):
-			break;
+			break
 			sys.exit(1)
 		else:
 			name = ''
@@ -166,7 +166,7 @@ def generate(max_num,gen_type):
 			elif(gen_type == "ad_compromise"):
 					#https://technet.microsoft.com/en-us/library/active-directory-maximum-limits-scalability(v=ws.10).aspx 
 					# based on above making 6m limit on dump
-					if (max_num == 6000000):
+					if (max_num is 6000000):
 						break
 						sys.exit(1)
 					else:
