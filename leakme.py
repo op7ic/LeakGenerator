@@ -47,7 +47,7 @@ def generate(max,gen_type):
 		if random.randrange(6,26) > 12:
 			password = random.choice(common_passwords)
 		else:
-			password = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,14)))
+			password = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(2,8)))
 		if(x==max):
 			
 			break;
@@ -102,27 +102,27 @@ def generate(max,gen_type):
 					print name,":",password,":",hash_object
 			elif (gen_type == "sha1_r_salt"):
 				if (re.match(emailregex, name)):
-					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
 					hash_object = hashlib.sha1(pass_obj).hexdigest()
 					print name,":",pass_obj,":",hash_object
 			elif (gen_type == "sha256_r_salt"):
 				if (re.match(emailregex, name)):
-					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
 					hash_object = hashlib.sha256(pass_obj).hexdigest()
 					print name,":",pass_obj,":",hash_object
 			elif (gen_type == "sha512_r_salt"):
 				if (re.match(emailregex, name)):
-					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
 					hash_object = hashlib.sha512(pass_obj).hexdigest()
 					print name,":",pass_obj,":",hash_object
 			elif (gen_type == "md5_r_salt"):
 				if (re.match(emailregex, name)):
-					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
 					hash_object = hashlib.md5(pass_obj).hexdigest()
 					print name,":",pass_obj,":",hash_object
 			elif (gen_type == "ntlm_r_salt"):
 				if (re.match(emailregex, name)):
-					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))
+					pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
 					hash_object = binascii.hexlify(hashlib.new('md4', pass_obj.encode('utf-16le')).digest())
 					print name,":",pass_obj,":",hash_object
 
@@ -142,19 +142,19 @@ def generate(max,gen_type):
 				hash_object = binascii.hexlify(hashlib.new('md4', password.encode('utf-16le')).digest())
 				print hash_object
 			elif(gen_type == "md5_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))
+				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
 				hash_object = hashlib.md5(pass_obj).hexdigest()
 				print hash_object
 			elif(gen_type == "sha1_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))
+				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
 				hash_object = hashlib.sha1(pass_obj).hexdigest()
 				print hash_object
 			elif(gen_type == "sha256_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))
+				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
 				hash_object = hashlib.sha256(pass_obj).hexdigest()
 				print hash_object
 			elif(gen_type == "sha512_r_salt_hashonly"):
-				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,25)))
+				pass_obj = password+''.join(random.choice(string.ascii_letters + string.digits) for _ in range(random.randrange(6,16)))
 				hash_object = hashlib.sha512(pass_obj).hexdigest()
 				print hash_object
 			elif(gen_type == "ntlm_r_salt_hashonly"):
@@ -166,7 +166,7 @@ def generate(max,gen_type):
 def help():
 	types="""
 -= LeakGenerator v1.1A by op7ic =-
-Discover your own leak with spoofed emails, passwords and hashes
+Discover your own leak with spoofed emails, random passwords and equally random hashes
 
 Supported hash types for '-t' argument:
 
