@@ -35,9 +35,9 @@ ntlm_r_salt
 
 [+] Other type. Will print "email : password" combo.
 clear
-ad_compromise # special "AD" compromise mode, no usernames just SIDs
+ad_compromise # special "AD" compromise mode, no usernames just SIDs + hashes
 
-[+] Hash only types that print only 'hash' values
+[+] Hash only types that print only hash values and no usernames or emails
 md5_hashonly
 sha1_hashonly
 sha256_hashonly
