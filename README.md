@@ -4,7 +4,6 @@ This project allows you to generate your own personal email and password leak co
 
 Fancy generating 280 milion fake emails with equally fake password? Why not ... (just run 'leakme.py' with appropriate arguments listed below)
 
-If you **really** need to create more emails/passwords just edit the file and change 'min' and 'max' variable.
 
 **Why?**
 
@@ -36,9 +35,9 @@ ntlm_r_salt
 
 [+] Other type. Will print "email : password" combo.
 clear
-ad_compromise # special "AD" compromise mode, no usernames just SIDs
+ad_compromise # special "AD" compromise mode, no usernames just SIDs + hashes
 
-[+] Hash only types that print only 'hash' values
+[+] Hash only types that print only hash values and no usernames or emails
 md5_hashonly
 sha1_hashonly
 sha256_hashonly
@@ -56,10 +55,6 @@ The final command would look like this:
 
 python leakme.py -t md5_r_salt -m 0x00FFFFFF
 ```
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 
 **Example**
 
