@@ -1,3 +1,6 @@
+[![License](https://img.shields.io/:license-gpl3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
+[![python](https://img.shields.io/badge/python-2.7-blue.svg)](https://www.python.org/downloads/)
+
 **Idea**
 
 This project allows you to generate your own personal email and password leak combo. 
