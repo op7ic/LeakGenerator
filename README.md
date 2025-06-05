@@ -36,34 +36,34 @@ pip install bcrypt scrypt argon2-cffi
 ## Usage
 
 ```bash
-python leakgen.py -t <hash_type> -m <count> [-f <format>] [-o <output>] [options]
+python leakme.py -t <hash_type> -m <count> [-f <format>] [-o <output>] [options]
 ```
 
 ### Examples
 
 **Generate 1 million MD5 hashes as MySQL dump:**
 ```bash
-python leakgen.py -t md5 -m 1000000 -f mysql -o leaked_users.sql
+python leakme.py -t md5 -m 1000000 -f mysql -o leaked_users.sql
 ```
 
 **Create CSV with SHA256 hashes (no passwords):**
 ```bash
-python leakgen.py -t sha256 -m 50000 -f csv --no-password -o hashes.csv
+python leakme.py -t sha256 -m 50000 -f csv --no-password -o hashes.csv
 ```
 
 **Generate realistic JSON credentials:**
 ```bash
-python leakgen.py -t clear -m 10000 -f json -o credentials.json
+python leakme.py -t clear -m 10000 -f json -o credentials.json
 ```
 
 **Create PostgreSQL dump with bcrypt:**
 ```bash
-python leakgen.py -t bcrypt -m 5000 -f postgres -o secure_leak.sql --table compromised_users
+python leakme.py -t bcrypt -m 5000 -f postgres -o secure_leak.sql --table compromised_users
 ```
 
 **Classic text format (like original):**
 ```bash
-python leakgen.py -t md5_r_salt -m 0x00FFFFFF -o massive_leak.txt
+python leakme.py -t md5_r_salt -m 0x00FFFFFF -o massive_leak.txt
 ```
 
 ### Supported Hash Types
